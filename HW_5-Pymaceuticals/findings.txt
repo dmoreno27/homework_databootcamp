@@ -1,0 +1,15 @@
+PYMACEUTICAL FINDINGS
+
+1. In comparing the effectiveness of the four select drugs (Capomulin, Infubinol, 
+Ketapril and Placebo), Capomulin is the only drug to have observable positive 
+impact on the size of tumors during the 45 day treatment period. Mice receiving 
+the Capomulin treatment experienced a 19%  reduction in the size of their tumors
+2. Similarly, mice receiving Capomulin were also the only mice to experienced a
+lower rate of metastatic spread. 
+3. Mice receiving Capomulin also experienced a greater rate of survival (reaching 
+a low of ~80%) through the treatment period, while mice of other treatments more 
+likely to not survive to the end of the treatment period (reaching a low of 
+~35-~43%). 
+
+These observations suggest that Capomulin is not only the most effective drug, 
+but the only effective drug, of the four selected drugs to observe.
