@@ -172,15 +172,18 @@ FROM store s
 
 -- 7h. List the top five genres in gross revenue in descending order. (Hint: you may need to use the 
 -- following tables: category, film_category, inventory, payment, and rental.)
-SELECT * FROM sales_by_film_category;
-
+SELECT * FROM sales_by_film_category ORDER BY total_sales DESC LIMIT 5;
 
 -- 8a. In your new role as an executive, you would like to have an easy way of viewing the Top five 
 -- genres by gross revenue. Use the solution from the problem above to create a view. If you haven't 
 -- solved 7h, you can substitute another query to create a view.
+CREATE VIEW top_revenue_films AS 
+SELECT * FROM sales_by_film_category ORDER BY total_sales DESC LIMIT 5;
 
 -- 8b. How would you display the view that you created in 8a?
+SELECT * FROM top_revenue_films;
 
 -- 8c. You find that you no longer need the view top_five_genres. Write a query to delete it.
+DROP VIEW IF EXISTS top_revenue_films;
 
 
