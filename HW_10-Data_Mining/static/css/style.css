@@ -23,7 +23,11 @@ h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   color: #000; }
 
-  
+.dark-link {
+color: #000;
+-webkit-transition: none;
+transition: none;
+}
 
 a {
   -webkit-transition: .3s all ease;
