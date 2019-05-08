@@ -17,12 +17,58 @@
 
         </div>
 
-        <div class="container">
+        <div class="row">
+            <div class="col-md-12">
             <h3>Latest Mars News</h3>
-            <h6></h6>
+            <h6>{{all_data.title}}</h6>
+            <p>{{all_data.body}}</p></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Featured Image</h3>
+                <img src="{{all_data.featured_image_url}}" style="max-width: 100%";>
+
+            </div>
+            <div class="col-md-4">
+                <div class="border p-1">
+                <h6>Current Weather on Mars</h6>
+                <p>{{all_data.mars_weather_text[0:30]}}</p>
+                <p>{{all_data.mars_weather_text[30:]}}</p></div>
+                <br>
+                <div>
+                    <h6>Mars Facts</h6>
+                    <div>{{all_data.html_table | safe}}</div>
+                </div>
+            </div>
+            </div>            <br>
+
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h3 class="text-center"> Mars Hemispheres</h3>
+                    <hr>
+</div></div>
+<div class="card-deck">
+            {% for item in all_data.hemis_dicts_all %}
+
+            <div class="col-md-6">
+            <div class="card">
+                    <img class="card-img-top" src="{{item.img_url}}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.title}}</h5>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+
         </div>
 
 
-    </div>
+
+
+            </div>
+
+            </div>
+        
 </body>
 </html>
