@@ -1,0 +1,162 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: Merriweather;
+}
+div, p, span  {
+  font-family: Lato;
+}
+
+.title_row {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 40px;
+}
+
+.panel-body {
+  -webkit-column-count: 2; 
+  -moz-column-count: 2;
+  column-count: 2;
+  padding-left: 20px;
+}
+
+#wrapper {
+  padding-left: 200px;
+  height: auto;
+}
+.minimenu {
+  float: right;
+}
+
+
+select {
+  width: 90px;
+  background-color:#ddd;
+  border: none;
+}
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 200px;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1;  
+  background: #000000;
+}
+
+#main-wrapper {
+  width: 100%;
+  background: #f1f1f1;
+}
+body {
+  background: #f1f1f1;
+}
+
+
+.sidebar-nav {
+  position: absolute;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+
+.sidebar-nav li {
+  line-height: 30px;
+  text-indent: 30px;
+}
+
+.sidebar-nav li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  color: #fff;
+
+  padding-left: 40px;
+}
+.back_top {
+  padding-bottom: 80px;
+  padding-top:20px;
+}
+
+
+.sidebar-nav li a:hover,
+.sidebar-nav li.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  width: 250px;
+}
+.back_top li a:hover,
+.back_top li.active {
+  color: #fff;
+  background: rgba(0, 0, 0, 1);
+  text-decoration: none;
+  width: 250px;
+}
+
+
+
+
+
+.content-header {
+  height: 65px;
+  line-height: 65px;
+}
+
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  line-height: 65px;
+  display: inline-block;
+} 
+
+#menu-toggle {
+    text-decoration: none;
+}
+
+.btn-menu {
+  color: #000;
+} 
+
+.inset {
+  padding: 20px 20px 20px 50px;
+}
+
+@media (max-width:767px) {
+
+.nav {
+  display: block;
+}
+#wrapper {
+  padding-left: 0;
+}
+#menu-toggle {
+  display: inline-block;
+} 
+.inset {
+  padding: 15px;
+}
+
+#sidebar-wrapper {
+  left: 0;
+}
+
+#wrapper.active {
+  position: relative;
+  left: 250px;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 250px;
+  width: 250px;
+}
+
+ 
+
+
+}
+
