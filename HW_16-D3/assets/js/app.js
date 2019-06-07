@@ -72,10 +72,10 @@ function loadChart() {
     var abbr = stateData.map(stateDatum => stateDatum.abbr);
     var state = stateData.map(stateDatum => stateDatum.state);
 
-    var x_min = d3.min(x_data) - 0.02 * d3.min(x_data);
-    var x_max = d3.max(x_data) + 0.02 * d3.max(x_data);
-    var y_min = d3.min(y_data) - 0.02 * d3.min(y_data);
-    var y_max = d3.max(y_data) + 0.02 * d3.max(y_data);
+    var x_min = d3.min(x_data)  * 0.95;
+    var x_max = d3.max(x_data) * 1.05;
+    var y_min = d3.min(y_data) * 0.95;
+    var y_max = d3.max(y_data) * 1.05;
 
     var xScale = d3.scaleLinear()
       .domain([x_min, x_max])
@@ -117,16 +117,10 @@ function loadChart() {
       .attr("width", (d, i) => chartWidth - xScale(x_data[i]))
       .attr("height", (d, i) => chartHeight - yScale(y_data[i]))
       .on('mouseover', function (d, i) {
-        d3.select(this).moveToFront();
-
-        d3.select(this).transition(t)
-          // .duration('25')
-          // .attr('opacity', '1')
-          ;
-
-        div.transition(t);
-          // .duration(50)
-          // .style("opacity", 1);
+        d3.select(this).transition(t) ;
+        div.transition(t)
+          .duration(50)
+          .style("opacity", 1);
         div.html(state[i] + "<br/>"
           + x_val + x_data[i] + x_unit + "<br/>"
           + y_val + y_data[i] + y_unit)
@@ -136,9 +130,7 @@ function loadChart() {
       .on('mouseout', function (d, i) {
         d3.select(this).transition(t)
           .attr('opacity', '1');
-        div.transition(t)
-          .style("opacity", 0);
-        d3.select(this).moveToBack();
+        div.transition(t).style("opacity", 0);
       });
 
 
@@ -232,21 +224,22 @@ function loadChart() {
       var xAxis = d3.axisBottom(xScale).ticks(10);
       chartGroup.select("#x_axis_line").transition(t).call(xAxis);
       chartGroup.selectAll("circle").data(x_data)
-        .on('mouseover', function (d, i) {
-          d3.select(this).transition(t);
-          div.transition(t);
-          div.html(state[i] + "<br/>"
-            + x_val + x_data[i] + x_unit + "<br/>"
-            + y_val + y_data[i] + y_unit)
-            .style("left", (d3.event.pageX + 10) + "px")
-            .style("top", (d3.event.pageY - 15) + "px");
-        })
-
-        ;
-      chartGroup.selectAll(".stateCircle").transition(t)
-        .attr("cx", (d, i) => xScale(x_data[i]));
-      chartGroup.selectAll(".stateText").transition(t)
-        .attr("x", (d, i) => xScale(x_data[i]));
+      .on('mouseover', function (d, i) {
+        d3.select(this).transition(t) ;
+        div.transition(t)
+          .duration(50)
+          .style("opacity", 1);
+        div.html(state[i] + "<br/>"
+          + x_val + x_data[i] + x_unit + "<br/>"
+          + y_val + y_data[i] + y_unit)
+          .style("left", (d3.event.pageX + 20) + "px")
+          .style("top", (d3.event.pageY - 20) + "px");
+      })
+      .on('mouseout', function (d, i) {
+        d3.select(this).transition(t)
+          .attr('opacity', '1');
+        div.transition(t).style("opacity", 0);
+      });
 
     }
     function updatey_axis() {
@@ -261,19 +254,25 @@ function loadChart() {
       var yAxis = d3.axisLeft(yScale).ticks(10);
       chartGroup.select("#y_axis_line").transition(t).call(yAxis);
       chartGroup.selectAll("circle").data(y_data)
-        .on('mouseover', function (d, i) {
-          d3.select(this).transition(t);
+      .on('mouseover', function (d, i) {
+        d3.select(this).transition(t) ;
+        div.transition(t)
+          .duration(50)
+          .style("opacity", 1);
+        div.html(state[i] + "<br/>"
+          + x_val + x_data[i] + x_unit + "<br/>"
+          + y_val + y_data[i] + y_unit)
+          .style("left", (d3.event.pageX + 20) + "px")
+          .style("top", (d3.event.pageY - 20) + "px");
+      })
+      .on('mouseout', function (d, i) {
+        d3.select(this).transition(t)
+          .attr('opacity', '1');
+        div.transition(t).style("opacity", 0);
+      })
+      
 
-          div.transition(t);
-
-          div.html(state[i] + "<br/>"
-            + x_val + x_data[i] + x_unit + "<br/>"
-            + y_val + y_data[i] + y_unit)
-            .style("left", (d3.event.pageX + 10) + "px")
-            .style("top", (d3.event.pageY - 15) + "px");
-        })
-
-        ;;
+        
       chartGroup.selectAll(".stateCircle").transition(t)
         .attr("cy", (d, i) => yScale(y_data[i]));
       chartGroup.selectAll(".stateText").transition(t)
