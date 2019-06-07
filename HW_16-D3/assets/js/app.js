@@ -72,10 +72,10 @@ function loadChart() {
     var abbr = stateData.map(stateDatum => stateDatum.abbr);
     var state = stateData.map(stateDatum => stateDatum.state);
 
-    var x_min = d3.min(x_data)  * 0.95;
-    var x_max = d3.max(x_data) * 1.05;
-    var y_min = d3.min(y_data) * 0.95;
-    var y_max = d3.max(y_data) * 1.05;
+    var x_min = d3.min(x_data)  * 0.85;
+    var x_max = d3.max(x_data) * 1.15;
+    var y_min = d3.min(y_data) * 0.85;
+    var y_max = d3.max(y_data) * 1.15;
 
     var xScale = d3.scaleLinear()
       .domain([x_min, x_max])
@@ -212,8 +212,8 @@ function loadChart() {
       ;
 
     function updatex_axis() {
-      x_min = d3.min(x_data);
-      x_max = d3.max(x_data);
+      x_min = d3.min(x_data)*0.85;
+      x_max = d3.max(x_data)*1.15;
 
 
       var xScale = d3.scaleLinear()
@@ -239,12 +239,19 @@ function loadChart() {
         d3.select(this).transition(t)
           .attr('opacity', '1');
         div.transition(t).style("opacity", 0);
-      });
+      })
+
+
+chartGroup.selectAll(".stateCircle").transition(t)
+.attr("cx", (d, i) => xScale(x_data[i]));
+
+chartGroup.selectAll(".stateText").transition(t)
+.attr("x", (d, i) => xScale(x_data[i]));
 
     }
     function updatey_axis() {
-      y_min = d3.min(y_data);
-      y_max = d3.max(y_data);
+      y_min = d3.min(y_data)*0.85;
+      y_max = d3.max(y_data)*1.15;
 
       var yScale = d3.scaleLinear()
         .domain([y_min, y_max])
@@ -266,15 +273,15 @@ function loadChart() {
           .style("top", (d3.event.pageY - 20) + "px");
       })
       .on('mouseout', function (d, i) {
-        d3.select(this).transition(t)
-          .attr('opacity', '1');
+        d3.select(this).transition(t).attr('opacity', '1');
         div.transition(t).style("opacity", 0);
       })
-      
 
-        
-      chartGroup.selectAll(".stateCircle").transition(t)
+
+      
+chartGroup.selectAll(".stateCircle").transition(t)
         .attr("cy", (d, i) => yScale(y_data[i]));
+
       chartGroup.selectAll(".stateText").transition(t)
         .attr("y", (d, i) => yScale(y_data[i]));
 
